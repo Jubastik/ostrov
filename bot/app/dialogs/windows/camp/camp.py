@@ -1,5 +1,5 @@
 from aiogram_dialog import Window
-from aiogram_dialog.widgets.kbd import Group, Start, Url, ScrollingGroup, Select, Cancel
+from aiogram_dialog.widgets.kbd import Group, Start, Url, ScrollingGroup, Select, Cancel, Back
 from aiogram_dialog.widgets.text import Const, Format
 
 from app.dialogs.states import CampSG
@@ -9,7 +9,7 @@ CampChoiceWin = Window(
     Const("Выберите стоянку:"),
     Group(
         ScrollingGroup(
-            Select(Format("{item[name]}"), "camp_btn", lambda camp: camp["uuid"], "camps",
+            Select(Format("{item[name]}"), "camp_btn", lambda camp: camp["id"], "camps",
                    on_click=start_camp_info),
             width=3, height=5,
             id="camps_group"),
@@ -20,8 +20,8 @@ CampChoiceWin = Window(
 )
 
 CampDerailedWin = Window(
-    Format("Информация о стоянке:\n{data}"),
-    Cancel(Const("Меню")),
+    Format("Информация о стоянке:\n\n{data}"),
+    Back(Const("Назад")),
     state=CampSG.main,
     getter=getter_detail,
 )

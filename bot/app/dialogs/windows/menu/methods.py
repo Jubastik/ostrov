@@ -9,7 +9,7 @@ stickers = ['👍', '👻', '😄', '🧐', '👀', '🌝', '🎫', '🔫', '�
 
 
 async def getter_menu(dialog_manager: DialogManager, **kwargs):
-    tg_id = "1234567890"
-    return {"name": "Олег",
+    name = kwargs["event_from_user"].first_name
+    return {"name": name,
             "sticker": choice(stickers),
             }

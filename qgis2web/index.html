@@ -31,12 +31,13 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="data/landscape_1.js"></script>
-        <script src="data/roads_2.js"></script>
-        <script src="data/rivers_3.js"></script>
+        <script src="data/kilpolashelters_2.js"></script>
+        <script src="data/roads_3.js"></script>
+        <script src="data/rivers_4.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:14, minZoom:1
-        }).fitBounds([[61.15783049545805,29.829194180399156],[61.194054096048575,29.959658210451334]]);
+            zoomControl:true, maxZoom:18, minZoom:13
+        }).fitBounds([[61.20242552264828,29.95549081447125],[61.21859287572612,30.013688901018643]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -295,7 +296,109 @@
         });
         bounds_group.addLayer(layer_landscape_1);
         map.addLayer(layer_landscape_1);
-        function pop_roads_2(feature, layer) {
+        function pop_kilpolashelters_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NAME</th>\
+                        <td>' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">field_1</th>\
+                        <td>' + (feature.properties['field_1'] !== null ? autolinker.link(feature.properties['field_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Видимость с воды</th>\
+                        <td>' + (feature.properties['Видимость с воды'] !== null ? autolinker.link(feature.properties['Видимость с воды'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Выход на берег</th>\
+                        <td>' + (feature.properties['Выход на берег'] !== null ? autolinker.link(feature.properties['Выход на берег'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Число палаток</th>\
+                        <td>' + (feature.properties['Число палаток'] !== null ? autolinker.link(feature.properties['Число палаток'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Дрова</th>\
+                        <td>' + (feature.properties['Дрова'] !== null ? autolinker.link(feature.properties['Дрова'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Связь</th>\
+                        <td>' + (feature.properties['Связь'] !== null ? autolinker.link(feature.properties['Связь'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Наличие комаров</th>\
+                        <td>' + (feature.properties['Наличие комаров'] !== null ? autolinker.link(feature.properties['Наличие комаров'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Достопримечательности</th>\
+                        <td>' + (feature.properties['Достопримечательности'] !== null ? autolinker.link(feature.properties['Достопримечательности'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Удобства</th>\
+                        <td>' + (feature.properties['Удобства'] !== null ? autolinker.link(feature.properties['Удобства'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Размер</th>\
+                        <td>' + (feature.properties['Размер'] !== null ? autolinker.link(feature.properties['Размер'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Виды на закаты/рассветы</th>\
+                        <td>' + (feature.properties['Виды на закаты/рассветы'] !== null ? autolinker.link(feature.properties['Виды на закаты/рассветы'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Альтернативы</th>\
+                        <td>' + (feature.properties['Альтернативы'] !== null ? autolinker.link(feature.properties['Альтернативы'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Координаты</th>\
+                        <td>' + (feature.properties['Координаты'] !== null ? autolinker.link(feature.properties['Координаты'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_kilpolashelters_2_0() {
+            return {
+                pane: 'pane_kilpolashelters_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,182,54,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_kilpolashelters_2');
+        map.getPane('pane_kilpolashelters_2').style.zIndex = 402;
+        map.getPane('pane_kilpolashelters_2').style['mix-blend-mode'] = 'normal';
+        var layer_kilpolashelters_2 = new L.geoJson(json_kilpolashelters_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_kilpolashelters_2',
+            layerName: 'layer_kilpolashelters_2',
+            pane: 'pane_kilpolashelters_2',
+            onEachFeature: pop_kilpolashelters_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_kilpolashelters_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_kilpolashelters_2);
+        map.addLayer(layer_kilpolashelters_2);
+        function pop_roads_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -305,9 +408,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_roads_2_0() {
+        function style_roads_3_0() {
             return {
-                pane: 'pane_roads_2',
+                pane: 'pane_roads_3',
                 opacity: 1,
                 color: 'rgba(249,212,0,1.0)',
                 dashArray: '',
@@ -318,21 +421,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_roads_2');
-        map.getPane('pane_roads_2').style.zIndex = 402;
-        map.getPane('pane_roads_2').style['mix-blend-mode'] = 'normal';
-        var layer_roads_2 = new L.geoJson(json_roads_2, {
+        map.createPane('pane_roads_3');
+        map.getPane('pane_roads_3').style.zIndex = 403;
+        map.getPane('pane_roads_3').style['mix-blend-mode'] = 'normal';
+        var layer_roads_3 = new L.geoJson(json_roads_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_roads_2',
-            layerName: 'layer_roads_2',
-            pane: 'pane_roads_2',
-            onEachFeature: pop_roads_2,
-            style: style_roads_2_0,
+            dataVar: 'json_roads_3',
+            layerName: 'layer_roads_3',
+            pane: 'pane_roads_3',
+            onEachFeature: pop_roads_3,
+            style: style_roads_3_0,
         });
-        bounds_group.addLayer(layer_roads_2);
-        map.addLayer(layer_roads_2);
-        function pop_rivers_3(feature, layer) {
+        bounds_group.addLayer(layer_roads_3);
+        map.addLayer(layer_roads_3);
+        function pop_rivers_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -342,9 +445,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_rivers_3_0() {
+        function style_rivers_4_0() {
             return {
-                pane: 'pane_rivers_3',
+                pane: 'pane_rivers_4',
                 opacity: 1,
                 color: 'rgba(72,123,182,1.0)',
                 dashArray: '',
@@ -355,27 +458,50 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_rivers_3');
-        map.getPane('pane_rivers_3').style.zIndex = 403;
-        map.getPane('pane_rivers_3').style['mix-blend-mode'] = 'normal';
-        var layer_rivers_3 = new L.geoJson(json_rivers_3, {
+        map.createPane('pane_rivers_4');
+        map.getPane('pane_rivers_4').style.zIndex = 404;
+        map.getPane('pane_rivers_4').style['mix-blend-mode'] = 'normal';
+        var layer_rivers_4 = new L.geoJson(json_rivers_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_rivers_3',
-            layerName: 'layer_rivers_3',
-            pane: 'pane_rivers_3',
-            onEachFeature: pop_rivers_3,
-            style: style_rivers_3_0,
+            dataVar: 'json_rivers_4',
+            layerName: 'layer_rivers_4',
+            pane: 'pane_rivers_4',
+            onEachFeature: pop_rivers_4,
+            style: style_rivers_4_0,
         });
-        bounds_group.addLayer(layer_rivers_3);
-        map.addLayer(layer_rivers_3);
+        bounds_group.addLayer(layer_rivers_4);
+        map.addLayer(layer_rivers_4);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/rivers_3.png" /> rivers': layer_rivers_3,'<img src="legend/roads_2.png" /> roads': layer_roads_2,'landscape<br /><table><tr><td style="text-align: center;"><img src="legend/landscape_1_водоёмы0.png" /></td><td>водоёмы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Пляжи1.png" /></td><td>Пляжи</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлеснаскалах3.png" /></td><td>Смешанный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Луга4.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Населенныепункты5.png" /></td><td>Населенные пункты</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлес6.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлес7.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлеспоболоту8.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Болота9.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_10.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлеснаскалах11.png" /></td><td>Лиственный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Береговыескалы12.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойноередколесьенаскалах13.png" /></td><td>Хвойное редколесье на скалах</td></tr></table>': layer_landscape_1,"topo_clip": layer_topo_clip_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/rivers_4.png" /> rivers': layer_rivers_4,'<img src="legend/roads_3.png" /> roads': layer_roads_3,'<img src="legend/kilpolashelters_2.png" /> kilpola — shelters': layer_kilpolashelters_2,'landscape<br /><table><tr><td style="text-align: center;"><img src="legend/landscape_1_водоёмы0.png" /></td><td>водоёмы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Пляжи1.png" /></td><td>Пляжи</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлеснаскалах3.png" /></td><td>Смешанный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Луга4.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Населенныепункты5.png" /></td><td>Населенные пункты</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлес6.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлес7.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлеспоболоту8.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Болота9.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_10.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлеснаскалах11.png" /></td><td>Лиственный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Береговыескалы12.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойноередколесьенаскалах13.png" /></td><td>Хвойное редколесье на скалах</td></tr></table>': layer_landscape_1,"topo_clip": layer_topo_clip_0,}).addTo(map);
         setBounds();
+        var i = 0;
+        layer_kilpolashelters_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NAME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_kilpolashelters_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
         L.ImageOverlay.include({
             getBounds: function () {
                 return this._bounds;
             }
+        });
+        resetLabels([layer_kilpolashelters_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_kilpolashelters_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_kilpolashelters_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_kilpolashelters_2]);
         });
         </script>
     </body>

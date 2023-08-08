@@ -14,7 +14,7 @@ MenuMainWin = Window(
     ),
     Group(
         Start(Const("Офлайн путеводитель"), state=CampSG.choice, id="pdf_btn"),
-        Url(Const("Онлайн путеводитель"), Const("https://www.youtube.com/watch?v=OBg9ZAqBifQ")),
+        Url(Const("Онлайн путеводитель"), Const("https://jubastik.github.io/ostrov/qgis2web/#14/61.2093/29.9432")),
         width=2,
     ),
     getter=getter_menu,

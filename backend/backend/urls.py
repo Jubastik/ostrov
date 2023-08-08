@@ -19,6 +19,7 @@ from django.urls import path
 
 from backend.apps.camp.views import CampAPIList, CampAPIDetail, CampDetailAPIList, CampDetailAPIDetail, OtherPhtAPIList
 from backend.apps.detection.views import DetectionAPIList
+from backend.apps.weather.views import WeatherAPIList
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path("api/camp_detail/<int:pk>/", CampDetailAPIDetail.as_view()),
     path("api/camp_detail/other_pht", OtherPhtAPIList.as_view()),
     path("api/detection/", DetectionAPIList.as_view()),
+    path("api/weather/", WeatherAPIList.as_view()),
 ]

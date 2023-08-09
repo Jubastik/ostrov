@@ -30,14 +30,14 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/landscape_1.js"></script>
-        <script src="data/kilpolashelters_2.js"></script>
-        <script src="data/roads_3.js"></script>
-        <script src="data/rivers_4.js"></script>
+        <script src="data/landscape_3.js"></script>
+        <script src="data/kilpolashelters_4.js"></script>
+        <script src="data/roads_5.js"></script>
+        <script src="data/rivers_6.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:18, minZoom:13
-        }).fitBounds([[61.20242552264828,29.95549081447125],[61.21859287572612,30.013688901018643]]);
+        }).fitBounds([[61.17065970610069,29.88382337663397],[61.235353881905844,30.11658631674743]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -45,16 +45,34 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_topo_clip_0');
-        map.getPane('pane_topo_clip_0').style.zIndex = 400;
-        var img_topo_clip_0 = 'data/topo_clip_0.png';
-        var img_bounds_topo_clip_0 = [[61.13127836754364,29.85430769181579],[61.234000918177244,30.0675127456052]];
-        var layer_topo_clip_0 = new L.imageOverlay(img_topo_clip_0,
-                                              img_bounds_topo_clip_0,
-                                              {pane: 'pane_topo_clip_0'});
-        bounds_group.addLayer(layer_topo_clip_0);
-        map.addLayer(layer_topo_clip_0);
-        function pop_landscape_1(feature, layer) {
+        map.createPane('pane_maxar_may_2022_p2_0');
+        map.getPane('pane_maxar_may_2022_p2_0').style.zIndex = 400;
+        var img_maxar_may_2022_p2_0 = 'data/maxar_may_2022_p2_0.png';
+        var img_bounds_maxar_may_2022_p2_0 = [[61.14534051332278,29.9668531775351],[61.219303492800755,30.054681581441088]];
+        var layer_maxar_may_2022_p2_0 = new L.imageOverlay(img_maxar_may_2022_p2_0,
+                                              img_bounds_maxar_may_2022_p2_0,
+                                              {pane: 'pane_maxar_may_2022_p2_0'});
+        bounds_group.addLayer(layer_maxar_may_2022_p2_0);
+        map.addLayer(layer_maxar_may_2022_p2_0);
+        map.createPane('pane_maxar_may_2022_1');
+        map.getPane('pane_maxar_may_2022_1').style.zIndex = 401;
+        var img_maxar_may_2022_1 = 'data/maxar_may_2022_1.png';
+        var img_bounds_maxar_may_2022_1 = [[61.14669234401701,29.882166812795017],[61.220529552139624,30.05174522952574]];
+        var layer_maxar_may_2022_1 = new L.imageOverlay(img_maxar_may_2022_1,
+                                              img_bounds_maxar_may_2022_1,
+                                              {pane: 'pane_maxar_may_2022_1'});
+        bounds_group.addLayer(layer_maxar_may_2022_1);
+        map.addLayer(layer_maxar_may_2022_1);
+        map.createPane('pane_topo_clip_2');
+        map.getPane('pane_topo_clip_2').style.zIndex = 402;
+        var img_topo_clip_2 = 'data/topo_clip_2.png';
+        var img_bounds_topo_clip_2 = [[61.13127836754364,29.85430769181579],[61.234000918177244,30.0675127456052]];
+        var layer_topo_clip_2 = new L.imageOverlay(img_topo_clip_2,
+                                              img_bounds_topo_clip_2,
+                                              {pane: 'pane_topo_clip_2'});
+        bounds_group.addLayer(layer_topo_clip_2);
+        map.addLayer(layer_topo_clip_2);
+        function pop_landscape_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -68,11 +86,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_landscape_1_0(feature) {
+        function style_landscape_3_0(feature) {
             switch(String(feature.properties['type'])) {
                 case '8':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -87,7 +105,7 @@
                     break;
                 case '10':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -102,7 +120,7 @@
                     break;
                 case '12':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -117,7 +135,7 @@
                     break;
                 case '13':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -132,7 +150,7 @@
                     break;
                 case '3':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -147,7 +165,7 @@
                     break;
                 case '5':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -162,7 +180,7 @@
                     break;
                 case '6':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -177,7 +195,7 @@
                     break;
                 case '7':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -192,7 +210,7 @@
                     break;
                 case '14':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -207,7 +225,7 @@
                     break;
                 case '4':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -222,7 +240,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -237,7 +255,7 @@
                     break;
                 case '9':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -252,7 +270,7 @@
                     break;
                 case '1':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -267,7 +285,7 @@
                     break;
                 case '2':
                     return {
-                pane: 'pane_landscape_1',
+                pane: 'pane_landscape_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.552)',
                 dashArray: '',
@@ -282,21 +300,21 @@
                     break;
             }
         }
-        map.createPane('pane_landscape_1');
-        map.getPane('pane_landscape_1').style.zIndex = 401;
-        map.getPane('pane_landscape_1').style['mix-blend-mode'] = 'normal';
-        var layer_landscape_1 = new L.geoJson(json_landscape_1, {
+        map.createPane('pane_landscape_3');
+        map.getPane('pane_landscape_3').style.zIndex = 403;
+        map.getPane('pane_landscape_3').style['mix-blend-mode'] = 'normal';
+        var layer_landscape_3 = new L.geoJson(json_landscape_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_landscape_1',
-            layerName: 'layer_landscape_1',
-            pane: 'pane_landscape_1',
-            onEachFeature: pop_landscape_1,
-            style: style_landscape_1_0,
+            dataVar: 'json_landscape_3',
+            layerName: 'layer_landscape_3',
+            pane: 'pane_landscape_3',
+            onEachFeature: pop_landscape_3,
+            style: style_landscape_3_0,
         });
-        bounds_group.addLayer(layer_landscape_1);
-        map.addLayer(layer_landscape_1);
-        function pop_kilpolashelters_2(feature, layer) {
+        bounds_group.addLayer(layer_landscape_3);
+        map.addLayer(layer_landscape_3);
+        function pop_kilpolashelters_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -362,9 +380,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_kilpolashelters_2_0() {
+        function style_kilpolashelters_4_0() {
             return {
-                pane: 'pane_kilpolashelters_2',
+                pane: 'pane_kilpolashelters_4',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -378,27 +396,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_kilpolashelters_2');
-        map.getPane('pane_kilpolashelters_2').style.zIndex = 402;
-        map.getPane('pane_kilpolashelters_2').style['mix-blend-mode'] = 'normal';
-        var layer_kilpolashelters_2 = new L.geoJson(json_kilpolashelters_2, {
+        map.createPane('pane_kilpolashelters_4');
+        map.getPane('pane_kilpolashelters_4').style.zIndex = 404;
+        map.getPane('pane_kilpolashelters_4').style['mix-blend-mode'] = 'normal';
+        var layer_kilpolashelters_4 = new L.geoJson(json_kilpolashelters_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_kilpolashelters_2',
-            layerName: 'layer_kilpolashelters_2',
-            pane: 'pane_kilpolashelters_2',
-            onEachFeature: pop_kilpolashelters_2,
+            dataVar: 'json_kilpolashelters_4',
+            layerName: 'layer_kilpolashelters_4',
+            pane: 'pane_kilpolashelters_4',
+            onEachFeature: pop_kilpolashelters_4,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_kilpolashelters_2_0(feature));
+                return L.circleMarker(latlng, style_kilpolashelters_4_0(feature));
             },
         });
-        bounds_group.addLayer(layer_kilpolashelters_2);
-        map.addLayer(layer_kilpolashelters_2);
-        function pop_roads_3(feature, layer) {
+        bounds_group.addLayer(layer_kilpolashelters_4);
+        map.addLayer(layer_kilpolashelters_4);
+        function pop_roads_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -408,9 +426,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_roads_3_0() {
+        function style_roads_5_0() {
             return {
-                pane: 'pane_roads_3',
+                pane: 'pane_roads_5',
                 opacity: 1,
                 color: 'rgba(249,212,0,1.0)',
                 dashArray: '',
@@ -421,21 +439,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_roads_3');
-        map.getPane('pane_roads_3').style.zIndex = 403;
-        map.getPane('pane_roads_3').style['mix-blend-mode'] = 'normal';
-        var layer_roads_3 = new L.geoJson(json_roads_3, {
+        map.createPane('pane_roads_5');
+        map.getPane('pane_roads_5').style.zIndex = 405;
+        map.getPane('pane_roads_5').style['mix-blend-mode'] = 'normal';
+        var layer_roads_5 = new L.geoJson(json_roads_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_roads_3',
-            layerName: 'layer_roads_3',
-            pane: 'pane_roads_3',
-            onEachFeature: pop_roads_3,
-            style: style_roads_3_0,
+            dataVar: 'json_roads_5',
+            layerName: 'layer_roads_5',
+            pane: 'pane_roads_5',
+            onEachFeature: pop_roads_5,
+            style: style_roads_5_0,
         });
-        bounds_group.addLayer(layer_roads_3);
-        map.addLayer(layer_roads_3);
-        function pop_rivers_4(feature, layer) {
+        bounds_group.addLayer(layer_roads_5);
+        map.addLayer(layer_roads_5);
+        function pop_rivers_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">fid</th>\
@@ -445,9 +463,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_rivers_4_0() {
+        function style_rivers_6_0() {
             return {
-                pane: 'pane_rivers_4',
+                pane: 'pane_rivers_6',
                 opacity: 1,
                 color: 'rgba(72,123,182,1.0)',
                 dashArray: '',
@@ -458,30 +476,30 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_rivers_4');
-        map.getPane('pane_rivers_4').style.zIndex = 404;
-        map.getPane('pane_rivers_4').style['mix-blend-mode'] = 'normal';
-        var layer_rivers_4 = new L.geoJson(json_rivers_4, {
+        map.createPane('pane_rivers_6');
+        map.getPane('pane_rivers_6').style.zIndex = 406;
+        map.getPane('pane_rivers_6').style['mix-blend-mode'] = 'normal';
+        var layer_rivers_6 = new L.geoJson(json_rivers_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_rivers_4',
-            layerName: 'layer_rivers_4',
-            pane: 'pane_rivers_4',
-            onEachFeature: pop_rivers_4,
-            style: style_rivers_4_0,
+            dataVar: 'json_rivers_6',
+            layerName: 'layer_rivers_6',
+            pane: 'pane_rivers_6',
+            onEachFeature: pop_rivers_6,
+            style: style_rivers_6_0,
         });
-        bounds_group.addLayer(layer_rivers_4);
-        map.addLayer(layer_rivers_4);
+        bounds_group.addLayer(layer_rivers_6);
+        map.addLayer(layer_rivers_6);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/rivers_4.png" /> rivers': layer_rivers_4,'<img src="legend/roads_3.png" /> roads': layer_roads_3,'<img src="legend/kilpolashelters_2.png" /> kilpola — shelters': layer_kilpolashelters_2,'landscape<br /><table><tr><td style="text-align: center;"><img src="legend/landscape_1_водоёмы0.png" /></td><td>водоёмы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Пляжи1.png" /></td><td>Пляжи</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Смешанныйлеснаскалах3.png" /></td><td>Смешанный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Луга4.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Населенныепункты5.png" /></td><td>Населенные пункты</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлес6.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлес7.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойныйлеспоболоту8.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Болота9.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_10.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Лиственныйлеснаскалах11.png" /></td><td>Лиственный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Береговыескалы12.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_1_Хвойноередколесьенаскалах13.png" /></td><td>Хвойное редколесье на скалах</td></tr></table>': layer_landscape_1,"topo_clip": layer_topo_clip_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/rivers_6.png" /> rivers': layer_rivers_6,'<img src="legend/roads_5.png" /> roads': layer_roads_5,'<img src="legend/kilpolashelters_4.png" /> kilpola — shelters': layer_kilpolashelters_4,'landscape<br /><table><tr><td style="text-align: center;"><img src="legend/landscape_3_водоёмы0.png" /></td><td>водоёмы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Пляжи1.png" /></td><td>Пляжи</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Смешанныйлеснаскалах3.png" /></td><td>Смешанный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Луга4.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Населенныепункты5.png" /></td><td>Населенные пункты</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Хвойныйлес6.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Лиственныйлес7.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Хвойныйлеспоболоту8.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Болота9.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_10.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Лиственныйлеснаскалах11.png" /></td><td>Лиственный лес на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Береговыескалы12.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/landscape_3_Хвойноередколесьенаскалах13.png" /></td><td>Хвойное редколесье на скалах</td></tr></table>': layer_landscape_3,"topo_clip": layer_topo_clip_2,"maxar_may_2022": layer_maxar_may_2022_1,"maxar_may_2022_p2": layer_maxar_may_2022_p2_0,}).addTo(map);
         setBounds();
         var i = 0;
-        layer_kilpolashelters_2.eachLayer(function(layer) {
+        layer_kilpolashelters_4.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NAME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_kilpolashelters_2'});
+            layer.bindTooltip((layer.feature.properties['NAME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_kilpolashelters_4'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -493,15 +511,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_kilpolashelters_2]);
+        resetLabels([layer_kilpolashelters_4]);
         map.on("zoomend", function(){
-            resetLabels([layer_kilpolashelters_2]);
+            resetLabels([layer_kilpolashelters_4]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_kilpolashelters_2]);
+            resetLabels([layer_kilpolashelters_4]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_kilpolashelters_2]);
+            resetLabels([layer_kilpolashelters_4]);
         });
         </script>
     </body>

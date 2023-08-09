@@ -8,12 +8,12 @@ from app.dialogs.windows.menu.methods import getter_menu
 MenuMainWin = Window(
     Format("Привет {name} {sticker}"),
     Group(
-        Start(Const("Информация"), state=InfoSG.main, id="info_btn"),
+        Start(Const("История"), state=InfoSG.main, id="info_btn"),
         Start(Const("Стоянки"), state=CampSG.choice, id="camp_btn"),
         width=1,
     ),
     Group(
-        Start(Const("Офлайн путеводитель"), state=CampSG.choice, id="pdf_btn"),
+        # Start(Const("Офлайн путеводитель"), state=CampSG.choice, id="pdf_btn"),
         Url(Const("Онлайн путеводитель"), Const("https://jubastik.github.io/ostrov/qgis2web/#14/61.2093/29.9432")),
         width=2,
     ),

@@ -4,6 +4,9 @@ from copy import deepcopy
 
 tmp_database = [{"id": 1,
                  "name": "Мятный берег",
+                 "temperature": "24.4",
+                 "humidity": "58.7",
+                 "pressure": "101453Па",
                  "visibility": "Хорошая, широкая",
                  "ashore": "Каменистый, низкий, удобный",
                  "number_tents": 2,
@@ -18,6 +21,9 @@ tmp_database = [{"id": 1,
                  },
                 {"id": 2,
                  "name": "Обзорная",
+                 "temperature": "25.2",
+                 "humidity": "59.9",
+                 "pressure": "101331Па",
                  "visibility": "Только с короткой дистанции",
                  "ashore": "Щебень и крупные камни, низкий ",
                  "number_tents": 5,
@@ -32,6 +38,9 @@ tmp_database = [{"id": 1,
                  },
                 {"id": 3,
                  "name": "Шашлычники",
+                 "temperature": "23.6",
+                 "humidity": "54.3",
+                 "pressure": "101278Па",
                  "visibility": "Отличная",
                  "ashore": "Песчано-каменистый, низкий",
                  "number_tents": 2,
@@ -46,6 +55,9 @@ tmp_database = [{"id": 1,
                  },
                 {"id": 4,
                  "name": "Кристальная",
+                 "temperature": "Неизвестно",
+                 "humidity": "Неизвестно",
+                 "pressure": "Неизвестно",
                  "visibility": "Плохая",
                  "ashore": "Каменистый, низкий, деревья",
                  "number_tents": 2,
@@ -60,6 +72,9 @@ tmp_database = [{"id": 1,
                  },
                 {"id": 5,
                  "name": "Колыбельный мыс",
+                 "temperature": "Неизвестно",
+                 "humidity": "Неизвестно",
+                 "pressure": "Неизвестно",
                  "visibility": "Хорошая",
                  "ashore": "Скалистый, высокий",
                  "number_tents": 4,
@@ -77,7 +92,7 @@ tmp_database = [{"id": 1,
 
 def text_occupied(occupied):
     if occupied is None:
-        return "Занятость неизвестна"
+        return "Неизвестно"
     elif occupied:
         return "Занято"
     else:
@@ -102,6 +117,10 @@ async def getter_detail(dialog_manager: DialogManager, **kwargs):
         if item["id"] == dialog_manager.dialog_data["camp_id"]:
             return {"data": f'📝 Название {item["name"]}\n'
                             f'○ Занятость: {text_occupied(item["occupied"])}\n'
+                            f'○ Температура: {item["temperature"]}\n'
+                            f'○ Влажность: {item["humidity"]}\n'
+                            f'○ Давление: {item["pressure"]}\n'
+                            f'➖➖➖➖➖➖➖➖➖➖➖➖➖\n'
                             f'○ Видимость с воды: {item["visibility"]}\n'
                             f'○ Берег: {item["ashore"]}\n'
                             f'○ Количество палаток: {item["number_tents"]}\n'

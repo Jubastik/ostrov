@@ -20,7 +20,7 @@ CampChoiceWin = Window(
 )
 
 CampDerailedWin = Window(
-    Format("Информация о стоянке:\n\n{data}"),
+    Format("{data}"),
     Back(Const("Назад")),
     state=CampSG.main,
     getter=getter_detail,

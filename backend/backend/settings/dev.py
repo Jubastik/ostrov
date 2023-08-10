@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "backend.apps.camp.apps.CampConfig",
     "backend.apps.detection.apps.DetectionConfig",
     "backend.apps.weather.apps.WeatherConfig",
+    "backend.apps.map.apps.MapConfig",
     # Third-party apps
     'rest_framework',
 ]

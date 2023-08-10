@@ -18,7 +18,7 @@ class CampSerializer(serializers.ModelSerializer):
 
 
 class CampDetailSerializer(serializers.ModelSerializer):
-    other_pht = OtherPhtSerializer(many=True, source='otherpht_set')
+    other_pht = OtherPhtSerializer(many=True, source='otherpht_set', read_only=True)
     occupied = serializers.BooleanField(read_only=True)
 
     class Meta:

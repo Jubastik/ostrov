@@ -20,16 +20,14 @@ from django.urls import path
 from backend.apps.camp.views import CampAPIList, CampAPIDetail, CampDetailAPIList, CampDetailAPIDetail, OtherPhtAPIList
 from backend.apps.detection.views import DetectionAPIList
 from backend.apps.weather.views import WeatherAPIList
-from backend.apps.map import views as mapviews
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/camp/", CampAPIList.as_view()),
     path("api/camp/<int:pk>/", CampAPIDetail.as_view()),
+    path("api/camp_detail/<int:camp_id>/", CampDetailAPIDetail.as_view()),
     path("api/camp_detail/", CampDetailAPIList.as_view()),
-    path("api/camp_detail/<int:pk>/", CampDetailAPIDetail.as_view()),
     path("api/camp_detail/other_pht", OtherPhtAPIList.as_view()),
     path("api/detection/", DetectionAPIList.as_view()),
     path("api/weather/", WeatherAPIList.as_view()),
-    path("", mapviews.index, name="index")
 ]

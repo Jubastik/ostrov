@@ -22,6 +22,7 @@ class CampDetailAPIList(generics.ListCreateAPIView):
 class CampDetailAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CampDetail.objects.all()
     serializer_class = CampDetailSerializer
+    lookup_field = 'camp_id'
 
 
 class OtherPhtAPIList(generics.ListCreateAPIView):

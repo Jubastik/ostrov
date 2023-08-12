@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="data/_3.js"></script>
+        <script src="data/_4.js"></script>
+        <script src="data/_5.js"></script>
+        <script src="data/_6.js"></script>
+        <script src="data/_7.js"></script>
+        <script src="data/_8.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:17, minZoom:12
+        }).fitBounds([[61.196306368893616,29.941300484799925],[61.22286569172805,30.036896438309366]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_19181944_0');
+        map.getPane('pane_19181944_0').style.zIndex = 400;
+        var img_19181944_0 = 'data/19181944_0.png';
+        var img_bounds_19181944_0 = [[61.13130254461047,29.854308222962956],[61.23400003534557,30.067506527407406]];
+        var layer_19181944_0 = new L.imageOverlay(img_19181944_0,
+                                              img_bounds_19181944_0,
+                                              {pane: 'pane_19181944_0'});
+        bounds_group.addLayer(layer_19181944_0);
+        map.createPane('pane_19541961_1');
+        map.getPane('pane_19541961_1').style.zIndex = 401;
+        var img_19541961_1 = 'data/19541961_1.png';
+        var img_bounds_19541961_1 = [[61.13127836754364,29.85430769181579],[61.234000918177244,30.0675127456052]];
+        var layer_19541961_1 = new L.imageOverlay(img_19541961_1,
+                                              img_bounds_19541961_1,
+                                              {pane: 'pane_19541961_1'});
+        bounds_group.addLayer(layer_19541961_1);
+        map.addLayer(layer_19541961_1);
+        map.createPane('pane_sentinel182023_2');
+        map.getPane('pane_sentinel182023_2').style.zIndex = 402;
+        var img_sentinel182023_2 = 'data/sentinel182023_2.png';
+        var img_bounds_sentinel182023_2 = [[61.1268716647022,29.844833750572715],[61.23843275823784,30.076272554817375]];
+        var layer_sentinel182023_2 = new L.imageOverlay(img_sentinel182023_2,
+                                              img_bounds_sentinel182023_2,
+                                              {pane: 'pane_sentinel182023_2'});
+        bounds_group.addLayer(layer_sentinel182023_2);
+        function pop__3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">land_type</th>\
+                        <td>' + (feature.properties['land_type'] !== null ? autolinker.link(feature.properties['land_type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__3_0(feature) {
+            switch(String(feature.properties['land_type'])) {
+                case 'Хвойный лес':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,105,56,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Лиственный лес':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,209,152,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Смешанный лес':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(50,179,123,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Береговые скалы':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,229,226,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Хвойное редколесье на скалах':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(56,70,133,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Лиственное редколесье на скалах':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,183,157,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Смешанное редколесье на скалах':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,139,131,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Луга':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(195,239,137,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Сельскохозяйственные угодья':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,0,116,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Заросли влаголюбивой растительности':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,246,125,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Болота':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,113,88,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Хвойный лес по болоту':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,0.5)',
+                interactive: true,
+            }
+                    break;
+                case 'Лиственный лес по болоту':
+                    return {
+                pane: 'pane__3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,255,0,0.5)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane__3');
+        map.getPane('pane__3').style.zIndex = 403;
+        map.getPane('pane__3').style['mix-blend-mode'] = 'normal';
+        var layer__3 = new L.geoJson(json__3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__3',
+            layerName: 'layer__3',
+            pane: 'pane__3',
+            onEachFeature: pop__3,
+            style: style__3_0,
+        });
+        bounds_group.addLayer(layer__3);
+        map.addLayer(layer__3);
+        function pop__4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__4_0() {
+            return {
+                pane: 'pane__4',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,188,253,0.5)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane__4');
+        map.getPane('pane__4').style.zIndex = 404;
+        map.getPane('pane__4').style['mix-blend-mode'] = 'normal';
+        var layer__4 = new L.geoJson(json__4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__4',
+            layerName: 'layer__4',
+            pane: 'pane__4',
+            onEachFeature: pop__4,
+            style: style__4_0,
+        });
+        bounds_group.addLayer(layer__4);
+        map.addLayer(layer__4);
+        function pop__5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__5_0() {
+            return {
+                pane: 'pane__5',
+                opacity: 1,
+                color: 'rgba(102,153,255,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,180,226,0.5)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane__5');
+        map.getPane('pane__5').style.zIndex = 405;
+        map.getPane('pane__5').style['mix-blend-mode'] = 'normal';
+        var layer__5 = new L.geoJson(json__5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__5',
+            layerName: 'layer__5',
+            pane: 'pane__5',
+            onEachFeature: pop__5,
+            style: style__5_0,
+        });
+        bounds_group.addLayer(layer__5);
+        map.addLayer(layer__5);
+        function pop__6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__6_0() {
+            return {
+                pane: 'pane__6',
+                opacity: 1,
+                color: 'rgba(249,212,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane__6');
+        map.getPane('pane__6').style.zIndex = 406;
+        map.getPane('pane__6').style['mix-blend-mode'] = 'normal';
+        var layer__6 = new L.geoJson(json__6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__6',
+            layerName: 'layer__6',
+            pane: 'pane__6',
+            onEachFeature: pop__6,
+            style: style__6_0,
+        });
+        bounds_group.addLayer(layer__6);
+        map.addLayer(layer__6);
+        function pop__7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__7_0() {
+            return {
+                pane: 'pane__7',
+                opacity: 1,
+                color: 'rgba(72,123,182,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane__7');
+        map.getPane('pane__7').style.zIndex = 407;
+        map.getPane('pane__7').style['mix-blend-mode'] = 'normal';
+        var layer__7 = new L.geoJson(json__7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__7',
+            layerName: 'layer__7',
+            pane: 'pane__7',
+            onEachFeature: pop__7,
+            style: style__7_0,
+        });
+        bounds_group.addLayer(layer__7);
+        map.addLayer(layer__7);
+        function pop__8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Название стоянки</th>\
+                        <td>' + (feature.properties['Название стоянки'] !== null ? autolinker.link(feature.properties['Название стоянки'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Занятость</th>\
+                        <td>' + (feature.properties['Занятость'] !== null ? autolinker.link(feature.properties['Занятость'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Температура</th>\
+                        <td>' + (feature.properties['Температура'] !== null ? autolinker.link(feature.properties['Температура'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Влажность</th>\
+                        <td>' + (feature.properties['Влажность'] !== null ? autolinker.link(feature.properties['Влажность'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Давление</th>\
+                        <td>' + (feature.properties['Давление'] !== null ? autolinker.link(feature.properties['Давление'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Видимость с воды</th>\
+                        <td>' + (feature.properties['Видимость с воды'] !== null ? autolinker.link(feature.properties['Видимость с воды'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Выход на берег</th>\
+                        <td>' + (feature.properties['Выход на берег'] !== null ? autolinker.link(feature.properties['Выход на берег'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Число палаток</th>\
+                        <td>' + (feature.properties['Число палаток'] !== null ? autolinker.link(feature.properties['Число палаток'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Дрова</th>\
+                        <td>' + (feature.properties['Дрова'] !== null ? autolinker.link(feature.properties['Дрова'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Связь</th>\
+                        <td>' + (feature.properties['Связь'] !== null ? autolinker.link(feature.properties['Связь'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Наличие комаров</th>\
+                        <td>' + (feature.properties['Наличие комаров'] !== null ? autolinker.link(feature.properties['Наличие комаров'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Достопримечательности</th>\
+                        <td>' + (feature.properties['Достопримечательности'] !== null ? autolinker.link(feature.properties['Достопримечательности'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Удобства</th>\
+                        <td>' + (feature.properties['Удобства'] !== null ? autolinker.link(feature.properties['Удобства'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Размер</th>\
+                        <td>' + (feature.properties['Размер'] !== null ? autolinker.link(feature.properties['Размер'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Виды на закаты/рассветы</th>\
+                        <td>' + (feature.properties['Виды на закаты/рассветы'] !== null ? autolinker.link(feature.properties['Виды на закаты/рассветы'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Дополнительно</th>\
+                        <td>' + (feature.properties['Дополнительно'] !== null ? autolinker.link(feature.properties['Дополнительно'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__8_0() {
+            return {
+                pane: 'pane__8',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,113,141,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane__8');
+        map.getPane('pane__8').style.zIndex = 408;
+        map.getPane('pane__8').style['mix-blend-mode'] = 'normal';
+        var layer__8 = new L.geoJson(json__8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__8',
+            layerName: 'layer__8',
+            pane: 'pane__8',
+            onEachFeature: pop__8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__8_0(feature));
+            },
+        });
+        var cluster__8 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__8.addLayer(layer__8);
+
+        bounds_group.addLayer(layer__8);
+        cluster__8.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/_8.png" /> стоянки': cluster__8,'<img src="legend/_7.png" /> реки': layer__7,'<img src="legend/_6.png" /> дороги': layer__6,'<img src="legend/_5.png" /> озера': layer__5,'<img src="legend/_4.png" /> застроенные территории': layer__4,'типы местности<br /><table><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлес0.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлес1.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Береговыескалы3.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойноередколесьенаскалах4.png" /></td><td>Хвойное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственноередколесьенаскалах5.png" /></td><td>Лиственное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанноередколесьенаскалах6.png" /></td><td>Смешанное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Луга7.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Сельскохозяйственныеугодья8.png" /></td><td>Сельскохозяйственные угодья</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Заросливлаголюбивойрастительности9.png" /></td><td>Заросли влаголюбивой растительности</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Болота10.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлеспоболоту11.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлеспоболоту12.png" /></td><td>Лиственный лес по болоту</td></tr></table>': layer__3,"sentinel 18 июня 2023": layer_sentinel182023_2,"послевоенная топографическая карта 1954-1961 гг.": layer_19541961_1,"подробная финская довоенная карта 1918-1944 гг.": layer_19181944_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer__8.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Название стоянки'] !== null?String('<div style="color: #323232; font-size: 13pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Название стоянки']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__8'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        resetLabels([layer__8]);
+        map.on("zoomend", function(){
+            resetLabels([layer__8]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer__8]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer__8]);
+        });
+        </script>
+    </body>
+</html>

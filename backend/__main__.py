@@ -6,6 +6,7 @@ LOGGING_CONFIG["formatters"]["access"]["fmt"] = '%(asctime)s %(levelprefix)s %(c
 if __name__ == "__main__":
     uvicorn.run(
         "backend.wsgi:application",
+        host="0.0.0.0",
         port=5000,
         reload=True,
     )

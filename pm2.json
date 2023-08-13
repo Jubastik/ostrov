@@ -2,12 +2,12 @@
   "apps": [
     {
       "name": "OBack",
-      "cwd": "/backend",
+      "cwd": "/root/ostrov/backend",
       "script": "poetry run python3 manage.py runserver 0.0.0.0:5000"
     },
     {
       "name": "OMap",
-      "cwd": "/qgis2web",
+      "cwd": "/root/ostrov/qgis2web",
       "script": "poetry run python3 ."
     }
   ]

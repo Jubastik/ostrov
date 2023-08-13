@@ -46,8 +46,8 @@ async def map_updater():
                                         "Дополнительно": camp_detail["description"],
                                         }
                 f_data["features"].append(f_camp)
-            with open("static/data/_8.js", mode="w", encoding="UTF8") as file:
-                file.write(f"var json__8 = {f_data}")
+            with open("static/data/_9.js", mode="w", encoding="UTF8") as file:
+                file.write(f"var json__9 = {f_data}")
 
             await sleep(30)
         except Exception as e:

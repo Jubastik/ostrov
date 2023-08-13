@@ -8,9 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/MarkerCluster.css">
-        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -33,34 +30,21 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet.markercluster.js"></script>
         <script src="data/_3.js"></script>
         <script src="data/_4.js"></script>
         <script src="data/_5.js"></script>
         <script src="data/_6.js"></script>
         <script src="data/_7.js"></script>
         <script src="data/_8.js"></script>
+        <script src="data/_9.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:17, minZoom:12
-        }).fitBounds([[61.196306368893616,29.941300484799925],[61.22286569172805,30.036896438309366]]);
+            zoomControl:true, maxZoom:18, minZoom:12
+        }).fitBounds([[61.17561337237945,29.905318187046646],[61.22874738000378,30.096481229992655]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-        var measureControl = new L.Control.Measure({
-            position: 'topleft',
-            primaryLengthUnit: 'meters',
-            secondaryLengthUnit: 'kilometers',
-            primaryAreaUnit: 'sqmeters',
-            secondaryAreaUnit: 'hectares'
-        });
-        measureControl.addTo(map);
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .innerHTML = '';
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -150,7 +134,7 @@
                 interactive: true,
             }
                     break;
-                case 'Береговые скалы':
+                case 'Скалистые берега':
                     return {
                 pane: 'pane__3',
                 opacity: 1,
@@ -483,6 +467,64 @@
                         <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <th scope="row">type</th>\
+                        <td>' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__8_0(feature) {
+            switch(String(feature.properties['type'])) {
+                case 'Водные':
+                    return {
+                pane: 'pane__8',
+                opacity: 1,
+                color: 'rgba(0,255,234,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Пешие':
+                    return {
+                pane: 'pane__8',
+                opacity: 1,
+                color: 'rgba(255,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane__8');
+        map.getPane('pane__8').style.zIndex = 408;
+        map.getPane('pane__8').style['mix-blend-mode'] = 'normal';
+        var layer__8 = new L.geoJson(json__8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__8',
+            layerName: 'layer__8',
+            pane: 'pane__8',
+            onEachFeature: pop__8,
+            style: style__8_0,
+        });
+        bounds_group.addLayer(layer__8);
+        map.addLayer(layer__8);
+        function pop__9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">Название стоянки</th>\
                         <td>' + (feature.properties['Название стоянки'] !== null ? autolinker.link(feature.properties['Название стоянки'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -550,9 +592,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style__8_0() {
+        function style__9_0() {
             return {
-                pane: 'pane__8',
+                pane: 'pane__9',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -566,40 +608,36 @@
                 interactive: true,
             }
         }
-        map.createPane('pane__8');
-        map.getPane('pane__8').style.zIndex = 408;
-        map.getPane('pane__8').style['mix-blend-mode'] = 'normal';
-        var layer__8 = new L.geoJson(json__8, {
+        map.createPane('pane__9');
+        map.getPane('pane__9').style.zIndex = 409;
+        map.getPane('pane__9').style['mix-blend-mode'] = 'normal';
+        var layer__9 = new L.geoJson(json__9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json__8',
-            layerName: 'layer__8',
-            pane: 'pane__8',
-            onEachFeature: pop__8,
+            dataVar: 'json__9',
+            layerName: 'layer__9',
+            pane: 'pane__9',
+            onEachFeature: pop__9,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style__8_0(feature));
+                return L.circleMarker(latlng, style__9_0(feature));
             },
         });
-        var cluster__8 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
-        cluster__8.addLayer(layer__8);
-
-        bounds_group.addLayer(layer__8);
-        cluster__8.addTo(map);
+        bounds_group.addLayer(layer__9);
+        map.addLayer(layer__9);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/_8.png" /> стоянки': cluster__8,'<img src="legend/_7.png" /> реки': layer__7,'<img src="legend/_6.png" /> дороги': layer__6,'<img src="legend/_5.png" /> озера': layer__5,'<img src="legend/_4.png" /> застроенные территории': layer__4,'типы местности<br /><table><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлес0.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлес1.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Береговыескалы3.png" /></td><td>Береговые скалы</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойноередколесьенаскалах4.png" /></td><td>Хвойное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственноередколесьенаскалах5.png" /></td><td>Лиственное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанноередколесьенаскалах6.png" /></td><td>Смешанное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Луга7.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Сельскохозяйственныеугодья8.png" /></td><td>Сельскохозяйственные угодья</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Заросливлаголюбивойрастительности9.png" /></td><td>Заросли влаголюбивой растительности</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Болота10.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлеспоболоту11.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлеспоболоту12.png" /></td><td>Лиственный лес по болоту</td></tr></table>': layer__3,"sentinel 18 июня 2023": layer_sentinel182023_2,"послевоенная топографическая карта 1954-1961 гг.": layer_19541961_1,"подробная финская довоенная карта 1918-1944 гг.": layer_19181944_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/_9.png" /> стоянки': layer__9,'Треки<br /><table><tr><td style="text-align: center;"><img src="legend/_8_Водные0.png" /></td><td>Водные</td></tr><tr><td style="text-align: center;"><img src="legend/_8_Пешие1.png" /></td><td>Пешие</td></tr></table>': layer__8,'<img src="legend/_7.png" /> реки': layer__7,'<img src="legend/_6.png" /> дороги': layer__6,'<img src="legend/_5.png" /> озера': layer__5,'<img src="legend/_4.png" /> застроенные территории': layer__4,'типы местности<br /><table><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлес0.png" /></td><td>Хвойный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлес1.png" /></td><td>Лиственный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанныйлес2.png" /></td><td>Смешанный лес</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Скалистыеберега3.png" /></td><td>Скалистые берега</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойноередколесьенаскалах4.png" /></td><td>Хвойное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственноередколесьенаскалах5.png" /></td><td>Лиственное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Смешанноередколесьенаскалах6.png" /></td><td>Смешанное редколесье на скалах</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Луга7.png" /></td><td>Луга</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Сельскохозяйственныеугодья8.png" /></td><td>Сельскохозяйственные угодья</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Заросливлаголюбивойрастительности9.png" /></td><td>Заросли влаголюбивой растительности</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Болота10.png" /></td><td>Болота</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Хвойныйлеспоболоту11.png" /></td><td>Хвойный лес по болоту</td></tr><tr><td style="text-align: center;"><img src="legend/_3_Лиственныйлеспоболоту12.png" /></td><td>Лиственный лес по болоту</td></tr></table>': layer__3,"sentinel 18 июня 2023": layer_sentinel182023_2,"послевоенная топографическая карта 1954-1961 гг.": layer_19541961_1,"подробная финская довоенная карта 1918-1944 гг.": layer_19181944_0,}).addTo(map);
         setBounds();
         var i = 0;
-        layer__8.eachLayer(function(layer) {
+        layer__9.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Название стоянки'] !== null?String('<div style="color: #323232; font-size: 13pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Название стоянки']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__8'});
+            layer.bindTooltip((layer.feature.properties['Название стоянки'] !== null?String('<div style="color: #323232; font-size: 13pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Название стоянки']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__9'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -611,15 +649,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer__8]);
+        resetLabels([layer__9]);
         map.on("zoomend", function(){
-            resetLabels([layer__8]);
+            resetLabels([layer__9]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer__8]);
+            resetLabels([layer__9]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer__8]);
+            resetLabels([layer__9]);
         });
         </script>
     </body>

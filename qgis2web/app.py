@@ -27,6 +27,7 @@ async def map_updater():
 
                 f_camp = deepcopy(camp_plate)
                 f_camp["geometry"]["coordinates"] = [camp["longitude"], camp["latitude"]]
+
                 f_camp["properties"] = {"fid": ind + 1,
                                         "Название стоянки": camp["name"],
                                         "Занятость": "nill",

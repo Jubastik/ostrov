@@ -11,6 +11,9 @@ class OtherPhtSerializer(serializers.ModelSerializer):
 
 class CampSerializer(serializers.ModelSerializer):
     occupied = serializers.BooleanField(read_only=True)
+    temperature = serializers.FloatField(read_only=True)
+    humidity = serializers.FloatField(read_only=True)
+    pressure = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Camp
@@ -19,7 +22,7 @@ class CampSerializer(serializers.ModelSerializer):
 
 class CampDetailSerializer(serializers.ModelSerializer):
     other_pht = OtherPhtSerializer(many=True, source='otherpht_set', read_only=True)
-    occupied = serializers.BooleanField(read_only=True)
+
 
     class Meta:
         model = CampDetail

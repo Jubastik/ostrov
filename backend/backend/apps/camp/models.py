@@ -18,6 +18,18 @@ class Camp(models.Model):
         detections = [i.time for i in self.detection_set.filter(time__range=[before, timezone.now()]).all()]
         return len(detections) > 6 or (len(detections) > 0 and max(detections).hour in range(22, 24))
 
+    @property
+    def temperature(self) -> float:
+        return self.weather_set.last().temperature
+
+    @property
+    def humidity(self) -> float:
+        return self.weather_set.last().humidity
+
+    @property
+    def pressure(self) -> float:
+        return self.weather_set.last().pressure
+
     def __str__(self):
         return self.name
 

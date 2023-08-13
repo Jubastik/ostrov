@@ -12,5 +12,6 @@ class Weather(models.Model):
         return f"Погода {self.camp.name} {self.time}"
 
     class Meta:
+        ordering = ('-time',)
         verbose_name = "Погода"
         verbose_name_plural = "Погода"

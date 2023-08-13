@@ -13,6 +13,14 @@ from copy import deepcopy
 
 load_dotenv()
 
+def occupied_txt(occupied):
+    print(occupied)
+    if occupied is bool and occupied is True:
+        return "Занято"
+    elif occupied is bool and occupied is False:
+        return "Свободно"
+    else:
+        return "Неизвестно"
 
 async def map_updater():
     while True:
@@ -30,10 +38,10 @@ async def map_updater():
 
                 f_camp["properties"] = {"fid": ind + 1,
                                         "Название стоянки": camp["name"],
-                                        "Занятость": camp.get("occupied", "Неизвестно"),
-                                        "Температура": camp.get("temperature"),
-                                        "Влажность": camp.get("humidity"),
-                                        "Давление": camp.get("pressure"),
+                                        "Занятость": occupied_txt(camp.get("occupied")),
+                                        "Температура": str(camp.get("temperature", "")),
+                                        "Влажность": str(camp.get("humidity", "")),
+                                        "Давление": str(camp.get("pressure", "")),
                                         "Видимость с воды": camp_detail["visibility"],
                                         "Выход на берег": camp_detail["ashore"],
                                         "Число палаток": camp_detail["number_tents"],

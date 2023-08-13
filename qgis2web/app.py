@@ -30,7 +30,7 @@ async def map_updater():
 
                 f_camp["properties"] = {"fid": ind + 1,
                                         "Название стоянки": camp["name"],
-                                        "Занятость": camp["occupation"],
+                                        "Занятость": camp["occupied"],
                                         "Температура": camp["temperature"],
                                         "Влажность": camp["humidity"],
                                         "Давление": camp["pressure"],

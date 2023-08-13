@@ -7,3 +7,10 @@ class Weather(models.Model):
     humidity = models.FloatField()
     pressure = models.FloatField()
     time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Погода {self.camp.name} {self.time}"
+
+    class Meta:
+        verbose_name = "Погода"
+        verbose_name_plural = "Погода"

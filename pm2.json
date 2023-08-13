@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "OBack",
+      "cwd": "/backend",
+      "script": "poetry run python3 manage.py runserver"
+    },
+    {
+      "name": "OMap",
+      "cwd": "/qgis2web",
+      "script": "poetry run python3 ."
+    }
+  ]
+}

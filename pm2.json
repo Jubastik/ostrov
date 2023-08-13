@@ -3,12 +3,14 @@
     {
       "name": "OBack",
       "cwd": "/root/ostrov/backend",
-      "script": "poetry run python3 manage.py runserver 0.0.0.0:5000"
+      "script": "poetry run python3 manage.py runserver 0.0.0.0:5000",
+      "watch": false
     },
     {
       "name": "OMap",
       "cwd": "/root/ostrov/qgis2web",
-      "script": "poetry run python3 ."
+      "script": "poetry run python3 .",
+      "watch": false
     }
   ]
 }

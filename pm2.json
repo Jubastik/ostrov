@@ -3,7 +3,7 @@
     {
       "name": "OBack",
       "cwd": "/backend",
-      "script": "poetry run python3 manage.py runserver"
+      "script": "poetry run python3 manage.py runserver 0.0.0.0:5000"
     },
     {
       "name": "OMap",

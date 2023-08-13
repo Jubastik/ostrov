@@ -14,13 +14,10 @@ from copy import deepcopy
 load_dotenv()
 
 def occupied_txt(occupied):
-    print(occupied)
-    if occupied is bool and occupied is True:
+    if  str(occupied) == "True":
         return "Занято"
-    elif occupied is bool and occupied is False:
+    elif str(occupied) == "False":
         return "Свободно"
-    else:
-        return "Неизвестно"
 
 async def map_updater():
     while True:

@@ -6,7 +6,7 @@ authors = ["Artem <artem00561@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 coloredlogs = "^15.0.1"
 redis = "^4.6.0"
 aiogram-dialog = {version = "^2.0.0b21", allow-prereleases = true}

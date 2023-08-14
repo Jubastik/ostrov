@@ -13,8 +13,7 @@ MenuMainWin = Window(
         width=1,
     ),
     Group(
-        # Start(Const("Офлайн путеводитель"), state=CampSG.choice, id="pdf_btn"),
-        Url(Const("🗺 Онлайн путеводитель"), Const("https://jubastik.github.io/ostrov/qgis2web/#14/61.2093/29.9432")),
+        Url(Const("🗺 Онлайн путеводитель"), Const("https://map.gortem.ru/")),
         width=2,
     ),
     getter=getter_menu,
